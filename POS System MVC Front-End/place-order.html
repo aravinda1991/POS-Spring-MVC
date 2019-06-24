@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>Dashboard Template · Bootstrap</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/dashboard/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        td {
+            cursor: pointer;
+        }
+
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/place-order.css">
+
+</head>
+<body>
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">POS System</a>
+
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a id="left-hover" class="nav-link" href="index.html">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span data-feather="home"></span>
+                            Dashboard <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="left-hover" class="nav-link" href="manage-customer.html">
+                            <i class="fas fa-user-edit"></i>
+                            <span data-feather="file"></span>
+                            Manage Customer
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="left-hover" class="nav-link" href="manage-item.html">
+                            <i class="fas fa-cookie-bite"></i>
+                            <span data-feather="shopping-cart"></span>
+                            Manage Items
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="left-hover" class="nav-link active" href="place-order.html">
+                            <i class="fas fa-cart-plus"></i>
+                            <span data-feather="users"></span>
+                            Place Order
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="left-hover" class="nav-link" href="search-order.html">
+                            <i class="fas fa-search"></i>
+                            <span data-feather="bar-chart-2"></span>
+                            Search Order
+                        </a>
+
+                </ul>
+
+
+            </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Place Order</h1>
+
+                <div class="form-group text-right">
+                    <button id="btnNewItem" type="button" class="btn btn-outline-warning">+ New Order</button>
+                </div>
+
+            </div>
+
+            <form action="/action_page.php">
+
+                <div class="row">
+                    <div class="col-9">
+                        <div class="form-group">
+                            <label>Order ID :</label>
+                            <label id="lblOrderId"></label>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label>Order Date :</label>
+                            <label id="lblOrderDate"></label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="row">
+                     <div class="col-9">
+                         <div class="form-group">
+                             <label>Order Date : </label>
+                             <label id="lblOrderDate"></label>
+                         </div>
+                     </div>
+                     <div class="col-3">
+                         <button type="button" class="btn btn-outline-warning">+ New Order</button>
+                     </div>
+                 </div>-->
+
+                <div class="row border-bottom">
+                    <div class="col-12 col-lg-2">
+                        <div class="form-group">
+                            <label>Customer ID</label>
+                            <div id="dropDownCustomer" class="btn-group">
+                                <button type="button" class="btn btn-outline-primary dropdown-toggle"
+                                        data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                    Select Customer
+                                </button>
+                                <div class="dropdown-menu">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="form-group">
+                            <label for="custName">Customer Name:</label>
+                            <input type="text" class="form-control" id="custName" name="custName" readonly="true">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row border-bottom" style="margin-top: 10px;">
+                    <div class="col-12 col-lg-2">
+                        <label>Item Code</label>
+                        <div id="dropDownItem" class="btn-group">
+                            <button type="button" class="btn btn-outline-primary dropdown-toggle"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                Select Item
+                            </button>
+                            <div class="dropdown-menu">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div class="form-group">
+                            <label for="description">Description:</label>
+                            <input type="text" class="form-control" id="description" name="description" readonly="true">
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-2 text-center">
+                        <div class="form-group">
+                            <label for="unitPrice">Unit Price:</label>
+                            <input type="text" class="form-control" id="unitPrice" name="unitPrice" readonly="true">
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-2 text-center">
+                        <div class="form-group">
+                            <label for="qtyOnHand">Qty On Hand:</label>
+                            <input type="text" class="form-control" id="qtyOnHand" name="qtyOnHand" readonly="true">
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-2 text-center">
+                        <div class="form-group">
+                            <label for="qty">Qty:</label>
+                            <input type="text" class="form-control" id="qty" placeholder="Enter Qty"
+                                   name="qty"
+                                   required>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Please enter qty.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-lg-2"></div>
+
+                    <div style="margin-top: 15px;">
+                        <button id="btnAdd" type="button" class="btn btn-primary"> Add</button>
+                    </div>
+                </div>
+
+
+            </form>
+
+            <div id="tblspace"></div>
+            <table id="tblPlaceOrder" class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Item Code</th>
+                    <th>Description</th>
+                    <th>Qty</th>
+                    <th>Unit Price</th>
+                    <th>Total</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="5" class="center">There are no records right now !</td>
+                </tr>
+                </tfoot>
+            </table>
+
+
+            <div class="row">
+
+                <div class="col-1 col-lg-4"></div>
+                <div class="col-1 col-lg-3">
+                    <label id="lblTot">Total :</label>
+                    <label id="lblTotal"></label>
+                </div>
+
+                <div class="col-1 col-lg-2"></div>
+
+
+                <div class="col-1 col-lg-2">
+                    <button id="btnPlaceOrder" type="button" class="btn btn-success">Place Order</button>
+                </div>
+
+            </div>
+
+
+        </main>
+    </div>
+</div>
+
+
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/database.js"></script>
+<script src="js/place-order.js"></script>
+
+</body>
+</html>

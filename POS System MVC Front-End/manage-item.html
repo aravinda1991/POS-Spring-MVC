@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>Dashboard Template · Bootstrap</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/dashboard/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        td {
+            cursor: pointer;
+        }
+
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/item.css">
+
+</head>
+<body>
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">POS System</a>
+
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a id="left-hover" class="nav-link" href="index.html">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span data-feather="home"></span>
+                            Dashboard <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="left-hover" class="nav-link" href="manage-customer.html">
+                            <i class="fas fa-user-edit"></i>
+                            <span data-feather="file"></span>
+                            Manage Customer
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="left-hover" class="nav-link active" href="manage-item.html">
+                            <i class="fas fa-cookie-bite"></i>
+                            <span data-feather="shopping-cart"></span>
+                            Manage Items
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="left-hover" class="nav-link" href="place-order.html">
+                            <i class="fas fa-cart-plus"></i>
+                            <span data-feather="users"></span>
+                            Place Order
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="left-hover" class="nav-link" href="search-order.html">
+                            <i class="fas fa-search"></i>
+                            <span data-feather="bar-chart-2"></span>
+                            Search Order
+                        </a>
+
+                </ul>
+
+
+            </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Manage Items</h1>
+
+                <div class="form-group text-right">
+                    <button id="btnNewItem" type="button" class="btn btn-outline-warning">+ New Item</button>
+                </div>
+
+            </div>
+
+            <form action="/action_page.php" class="was-validated">
+
+                <div class="row">
+                    <div class="col col-12 col-lg-4">
+                        <div class="form-group">
+                            <label for="itemCode">Item Code:</label>
+                            <input type="text" class="form-control" id="itemCode">
+                            <!--readonly="true"-->
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Description:</label>
+                            <input type="text" class="form-control" id="description"
+                                   placeholder="Enter Item Description"
+                                   name="description"
+                                   required>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Please enter item description.</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="qty">Item Qty</label>
+                            <input type="text" class="form-control" id="qty" placeholder="Enter Item Qty."
+                                   name="qty"
+                                   required>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Please enter item qty.</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="unitPrice">Unit Price:</label>
+                            <input type="text" class="form-control" id="unitPrice" placeholder="Enter Item Unit Price"
+                                   name="unitPrice"
+                                   required>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Please enter unit price.</div>
+                        </div>
+
+                        <div class="form-group text-center">
+                            <button id="btnSave" type="button" class="btn btn-primary">Save</button>
+                            <button id="btnUpdate" type="button" class="btn btn-warning">Update</button>
+                        </div>
+
+                    </div>
+
+                    <div class="col col-12 col-lg-8">
+
+                        <h5 class="text-center">Items Details</h5>
+                        <table id="tblItem" class="table table-bordered table-hover">
+                            <colgroup>
+                                <col style="width: 100px;">
+                                <col>
+                                <col>
+                                <col>
+                                <col style="width: 100px;">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th>Item Code</th>
+                                <th>Description</th>
+                                <th>Qty</th>
+                                <th>Unit Price</th>
+                                <th>Delete</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <td colspan="5" class="center">There are no records right now !</td>
+                            </tr>
+                            </tfoot>
+                        </table>
+
+                    </div>
+
+                </div>
+            </form>
+
+
+        </main>
+    </div>
+</div>
+
+
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/database.js"></script>
+<script src="js/item.js"></script>
+
+</body>
+</html>
